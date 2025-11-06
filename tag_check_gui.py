@@ -40,7 +40,7 @@ class ReviewFrame(tk.Frame):
         self.rotate_upright = tk.BooleanVar(value=True)   # 宽>高时旋转90°
         self.keep_prefix = tk.BooleanVar(value=False)     # 前缀沿用
         self.keep_middle = tk.BooleanVar(value=False)     # 中间项沿用
-        self.keep_index  = tk.BooleanVar(value=False)     # ⭐ 新增：编号沿用
+        self.keep_index  = tk.BooleanVar(value=False)     # 编号沿用
         self.index_custom_mode = tk.BooleanVar(value=False)  # 使用自定义编号
 
         self._build_ui()
@@ -57,15 +57,18 @@ class ReviewFrame(tk.Frame):
         s.configure("TCombobox", font=base_font)
 
         # 顶栏
-        top = ttk.Frame(self); top.pack(fill="x", padx=8, pady=6)
+        top = ttk.Frame(self)
+        top.pack(fill="x", padx=8, pady=6)
         ttk.Button(top, text="📂 选择图片根目录", command=self._pick_root).pack(side="left")
         self.var_recur = tk.BooleanVar(value=False)
         ttk.Checkbutton(top, text="递归子文件夹", variable=self.var_recur, command=self._reload).pack(side="left", padx=(8,0))
         ttk.Button(top, text="刷新列表", command=self._reload).pack(side="left", padx=(8,0))
-        self.lbl_total = ttk.Label(top, text="0/0"); self.lbl_total.pack(side="right")
+        self.lbl_total = ttk.Label(top, text="0/0")
+        self.lbl_total.pack(side="right")
 
         # 主区：左图区（文件名+画布） / 右控件
-        main = ttk.Frame(self); main.pack(fill="both", expand=True, padx=8, pady=6)
+        main = ttk.Frame(self)
+        main.pack(fill="both", expand=True, padx=8, pady=6)
 
         # ——左侧容器（只在这个区域内居中文件名）——
         left = ttk.Frame(main)
@@ -78,7 +81,8 @@ class ReviewFrame(tk.Frame):
         self.canvas.bind("<Configure>", lambda e: self._draw_current_image())
 
         # ——右侧功能区——
-        right = ttk.Frame(main); right.pack(side="right", fill="y", padx=(10,0))
+        right = ttk.Frame(main)
+        right.pack(side="right", fill="y", padx=(10,0))
 
         ttk.Checkbutton(right, text="强制竖直显示（宽>高时旋转90°）",
                         variable=self.rotate_upright, command=self._draw_current_image).pack(anchor="w")
@@ -87,7 +91,8 @@ class ReviewFrame(tk.Frame):
         lf.pack(fill="x", pady=6)
 
         # 前缀
-        r1 = ttk.Frame(lf); r1.pack(fill="x", padx=6, pady=4)
+        r1 = ttk.Frame(lf)
+        r1.pack(fill="x", padx=6, pady=4)
         ttk.Label(r1, text="前缀：").pack(side="left")
         self.var_prefix = tk.StringVar(value="")
         self.ent_prefix = ttk.Entry(r1, textvariable=self.var_prefix, width=22)
@@ -95,7 +100,8 @@ class ReviewFrame(tk.Frame):
         ttk.Checkbutton(r1, text="沿用", variable=self.keep_prefix).pack(side="left")
 
         # 中间项
-        r2 = ttk.Frame(lf); r2.pack(fill="x", padx=6, pady=4)
+        r2 = ttk.Frame(lf)
+        r2.pack(fill="x", padx=6, pady=4)
         ttk.Label(r2, text="中间项：").pack(side="left")
         self.var_middle = tk.StringVar(value="")
         self.ent_middle = ttk.Entry(r2, textvariable=self.var_middle, width=30)
@@ -103,7 +109,8 @@ class ReviewFrame(tk.Frame):
         ttk.Checkbutton(r2, text="沿用", variable=self.keep_middle).pack(side="left")
 
         # 编号（含“沿用”）
-        r3 = ttk.Frame(lf); r3.pack(fill="x", padx=6, pady=4)
+        r3 = ttk.Frame(lf)
+        r3.pack(fill="x", padx=6, pady=4)
         ttk.Label(r3, text="编号：").pack(side="left")
         idx_values = [""] + [str(i) for i in range(1, 101)]  # 可为空
         self.var_index_combo = tk.StringVar(value="")
@@ -118,7 +125,7 @@ class ReviewFrame(tk.Frame):
                                           width=12, state="disabled")
         self.ent_index_custom.pack(side="left", padx=(0,10))
 
-        # ⭐ 新增：编号“沿用”开关
+        # 编号“沿用”开关
         ttk.Checkbutton(r3, text="沿用", variable=self.keep_index).pack(side="left")
 
         # 预览
@@ -130,11 +137,13 @@ class ReviewFrame(tk.Frame):
             v.trace_add("write", lambda *_: self._update_preview())
 
         # 导航/动作
-        nav = ttk.Frame(right); nav.pack(fill="x", pady=(6,0))
+        nav = ttk.Frame(right)
+        nav.pack(fill="x", pady=(6,0))
         ttk.Button(nav, text="← 上一个", command=self.prev_item).pack(side="left", expand=True, fill="x")
         ttk.Button(nav, text="下一个 →", command=self.next_item).pack(side="left", expand=True, fill="x", padx=(6,0))
 
-        act = ttk.Frame(right); act.pack(fill="x", pady=6)
+        act = ttk.Frame(right)
+        act.pack(fill="x", pady=6)
         ttk.Button(act, text="通过（不改）并下一张（方向键）", command=self.pass_and_next).pack(fill="x", pady=4)
         ttk.Button(act, text="保存并下一张（回车）", command=self.save_and_next).pack(fill="x", pady=4)
         ttk.Button(act, text="🧹 清空输入", command=self._clear_inputs).pack(fill="x", pady=4)
@@ -143,16 +152,20 @@ class ReviewFrame(tk.Frame):
         self.var_status = tk.StringVar(value="状态：未加载")
         ttk.Label(right, textvariable=self.var_status, foreground="#666").pack(fill="x", pady=(8,0))
 
-        bottom = ttk.Frame(self); bottom.pack(fill="x", padx=8, pady=(0,8))
-        self.lbl_progress = ttk.Label(bottom, text="进度：0/0"); self.lbl_progress.pack(side="left")
-        self.lbl_usage = ttk.Label(bottom, text="CPU 0% | 内存 0/0"); self.lbl_usage.pack(side="right")
+        bottom = ttk.Frame(self)
+        bottom.pack(fill="x", padx=8, pady=(0,8))
+        self.lbl_progress = ttk.Label(bottom, text="进度：0/0")
+        self.lbl_progress.pack(side="left")
+        self.lbl_usage = ttk.Label(bottom, text="CPU 0% | 内存 0/0")
+        self.lbl_usage.pack(side="right")
 
-        # 全局快捷键：方向键只换图不改名；回车保存并下一张
+        # 全局快捷键：方向键只换图不改名
+        # 回车保存并下一张
         self.bind_all("<KeyPress-Left>", self._nav_left, add=True)
         self.bind_all("<KeyPress-Right>", self._nav_right, add=True)
         self.bind_all("<Return>", self._hit_enter, add=True)
 
-    # ---- 资源显示 ----
+    # 资源显示
     def _update_resource(self):
         try:
             if psutil:
@@ -162,7 +175,7 @@ class ReviewFrame(tk.Frame):
         finally:
             self.after(1000, self._update_resource)
 
-    # ---- 文件加载 ----
+    # 文件加载
     def _pick_root(self):
         d = filedialog.askdirectory(title="选择图片根目录", parent=self)
         if not d: return
@@ -171,8 +184,10 @@ class ReviewFrame(tk.Frame):
 
     def _reload(self):
         if not self.image_root:
-            self.files = []; self.idx = -1
-            self._refresh_view(); return
+            self.files = []
+            self.idx = -1
+            self._refresh_view()
+            return
         if self.var_recur.get():
             self.files = sorted([p for p in self.image_root.rglob("*")
                                  if p.is_file() and p.suffix.lower() in IMG_EXTS],
@@ -184,7 +199,7 @@ class ReviewFrame(tk.Frame):
         self.idx = 0 if self.files else -1
         self._refresh_view()
 
-    # ---- 视图刷新 ----
+    # 视图刷新
     def _refresh_view(self):
         total = len(self.files)
         cur = self.idx + 1 if self.idx >= 0 else 0
@@ -204,14 +219,14 @@ class ReviewFrame(tk.Frame):
         self.lbl_name.config(text=p.name)             # 左侧居中文件名
         self.var_status.set(f"状态：{p}")
 
-        # ——切图后的默认填充：尊重“沿用”勾选——
+        # 切图后的默认填充：“沿用”勾选
         # 前缀
         if not self.keep_prefix.get():
             self.var_prefix.set("")
         # 中间项
         if not self.keep_middle.get():
             self.var_middle.set("")
-        # 编号（⭐ 新增逻辑）
+        # 编号
         if not self.keep_index.get():
             self.index_custom_mode.set(False)
             self.var_index_combo.set("")
@@ -256,11 +271,12 @@ class ReviewFrame(tk.Frame):
 
     def _update_preview(self):
         if self.idx < 0 or not self.files:
-            self.var_preview.set("预览文件名："); return
+            self.var_preview.set("预览文件名：")
+            return
         ext = self.files[self.idx].suffix or ".jpg"
         self.var_preview.set(f"预览文件名：{self._compose_stem()}{ext}")
 
-    # ---- 全局快捷键（方向键只换图；回车保存） ----
+    # 全局快捷键（方向键只换图；回车保存）
     def _nav_left(self, e):
         self.prev_item()
         return "break"
@@ -288,9 +304,12 @@ class ReviewFrame(tk.Frame):
         self.next_item()
 
     def _clear_inputs(self):
-        self.var_prefix.set(""); self.var_middle.set("")
-        self.var_index_combo.set(""); self.var_index_custom.set("")
-        self.index_custom_mode.set(False); self.ent_index_custom.configure(state="disabled")
+        self.var_prefix.set("")
+        self.var_middle.set("")
+        self.var_index_combo.set("")
+        self.var_index_custom.set("")
+        self.index_custom_mode.set(False)
+        self.ent_index_custom.configure(state="disabled")
         self._update_preview()
 
     def save_and_next(self):
@@ -298,10 +317,13 @@ class ReviewFrame(tk.Frame):
         src = self.files[self.idx]
         stem_new = self._compose_stem()
         if not stem_new:
-            messagebox.showwarning("提示", "目标文件名为空。", parent=self); return
+            messagebox.showwarning("提示", "目标文件名为空。", parent=self)
+            return
         dst = src.with_name(f"{stem_new}{src.suffix}")
+        
         if dst.exists() and dst.resolve() != src.resolve():
-            messagebox.showerror("冲突", f"目标已存在：\n{dst}", parent=self); return
+            messagebox.showerror("冲突", f"目标已存在：\n{dst}", parent=self)
+            return
         try:
             src.rename(dst)
             self.files[self.idx] = dst
@@ -319,6 +341,8 @@ def build_frame(parent, on_title=None, on_need_close=None):
 
 
 if __name__ == "__main__":
-    root = tk.Tk(); root.title("人工核验（独立窗口）")
+    root = tk.Tk()
+    root.title("人工核验（独立窗口）")
     build_frame(root)
     root.mainloop()
+
