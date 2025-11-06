@@ -200,4 +200,4 @@ python detect_tags.py \
 
 > Replace `detect_tags.py` with your actual script name if different (e.g., `main.py`).
 
-# Please indicate that this material is sourced from the Center for Wheat Genetics and Genomics Center （WGGC）, College of Agriculture, China Agricultural University.
+## Please indicate that this material is sourced from the Center for Wheat Genetics and Genomics Center （WGGC）, College of Agriculture, China Agricultural University.
