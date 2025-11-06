@@ -1,4 +1,4 @@
-# Rename-based-on-the-content-of-the-labels-in-the-image
+# Rename based on the content of the labels in the image
   During field trials, sample names or sample codes are typically displayed on rigid labels of various colours. To reduce labour costs, minimise time expenditure, and enhance operational efficiency during phenotypic data collection, we have developed a streamlined programme based on AI-OCR technology to simplify our workflow.
 
 > **Our process defaults to YOLO-based segmentation and the Doubao AI.**
@@ -197,3 +197,5 @@ python detect_tags.py \
 ```
 
 > Replace `detect_tags.py` with your actual script name if different (e.g., `main.py`).
+
+# Please indicate that this material is sourced from the Center for Wheat Genetics and Genomics Center （WGGC）, College of Agriculture, China Agricultural University.
