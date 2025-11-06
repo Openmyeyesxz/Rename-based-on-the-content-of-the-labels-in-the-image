@@ -12,7 +12,11 @@
 - 重复处理策略通过 --duplicates 指定（必填）：True=编号去重；False=直接用 OCR 为文件名，不做去重
 """
 
-import os, re, csv, sys, base64, uuid, time, shutil, argparse
+import os, re, csv, sys, uuid, time, shutil, argparse
+import cv2
+import base64 as _b64
+from ultralytics import YOLO
+from volcenginesdkarkruntime import Ark
 from pathlib import Path
 from collections import defaultdict
 
@@ -93,11 +97,11 @@ def safe_batch_rename(pairs, dry_run=False, log_fn=print):
 
 # ========= Ark OCR =========
 def _ark_client(api_key: str):
- from volcenginesdkarkruntime import Ark
+
  return Ark(base_url=DEFAULT_ARK_BASE_URL, api_key=api_key)
 
 def _ndarray_to_data_url(img_bgr, mime="image/png"):
- import cv2, base64 as _b64
+
  ok, buf = cv2.imencode(".png", img_bgr)
  if not ok: raise RuntimeError("图像编码失败")
  b64 = _b64.b64encode(buf.tobytes()).decode("utf-8")
@@ -254,8 +258,8 @@ def main():
   sys.exit(2)
 
  # 惰性导入重型依赖
- import cv2
- from ultralytics import YOLO
+
+
 
  device = _normalize_device_str(args.device)
  client = _ark_client(ark_key)
