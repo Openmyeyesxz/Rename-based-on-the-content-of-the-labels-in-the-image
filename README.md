@@ -219,6 +219,13 @@ python detect_tags.py \
 
 ---
 
+
+# 4. 人工审核照片程序
+> 能够实时地预览、修改和保存你的图片，以免AI实现错误的重命名。
+## 界面视图如下：
+![image](https://github.com/Openmyeyesxz/Image-Renamd_By_AI-OCR/blob/main/Image/tag_check.png)
+
+---
 ## 引用要求
 请注明本材料来源于 **中国农业大学农学院 小麦研究中心（WGGC, Center for Wheat Genetics and Genomics Center）**。
 
