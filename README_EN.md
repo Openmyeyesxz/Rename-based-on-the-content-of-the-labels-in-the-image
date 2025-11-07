@@ -3,8 +3,8 @@
 
 <p align="center">
   <strong>Read this in other languages:</strong>
-  <a href="README_zh.md">中文</a> ·
-  <a href="README.md">English</a>
+  <a href="README.md">中文</a> ·
+  <a href="README_EN.md">English</a>
 </p>
 
 ---
