@@ -1,19 +1,23 @@
-# Rename based on the content of the labels in the image
-  During field trials, sample names or sample codes are typically displayed on rigid labels of various colours. To reduce labour costs, minimise time expenditure, and enhance operational efficiency during phenotypic data collection, we have developed a streamlined programme based on AI-OCR technology to simplify our workflow.
+# <p align="center">Rename based on the content of the labels in the image</p>
+<p align="center">During field trials, sample names or sample codes are typically displayed on rigid labels of various colours. To reduce labour costs, minimise time expenditure, and enhance operational efficiency during phenotypic data collection, we have developed a streamlined programme based on AI-OCR technology to simplify our workflow.</p>
 
 <p align="center">
   <strong>Read this in other languages:</strong>
-  <a href="README.md">English</a> ·
-  <a href="README_zh.md">中文</a>
+  <a href="README_zh.md">中文</a> ·
+  <a href="README.md">English</a>
 </p>
 
-## Note⚠️: If you have a file containing multiple images, after the renaming process completes, successfully renamed images will be moved from the original file into the newly created folder and will not remain in the original folder.
+---
 
-> **Our process defaults to YOLO-based segmentation and the Doubao AI.**
+## Program Function Details
+>- Based on the content of labels within images, AI-OCR enables the automatic renaming of images across multiple subfolders within a parent folder.
+>- The current workflow defaults to using the YOLO model for detecting and segmenting target labels, then invokes the Doubao visual large model for OCR processing. (Future updates may incorporate additional models and AI types).
+>- Additionally, an executable program is provided for manual verification, enabling real-time viewing and modification of image filenames.
 
-> **We provide run files that can process multiple subsets in a loop.**
+## Note⚠️
+Before proceeding, if you're unsure, please back up your original data. After renaming is complete, **the program will move successfully renamed images from the original folder to the output folder, and the corresponding original images will no longer be retained in the original folder**.
 
-> **Additionally, we provide an executable program for manually reviewing photos, which can change your photo names in real time.**
+---
 
 # 1. Files structure
 ## Job-root layout (typical)
@@ -81,6 +85,8 @@ test/
    └─ ...
 ```
 
+---
+
 # 2. Command-line Arguments
 
 | Flag                                           | Type / Values      | Required | Default                                   | What it does                                                            | Notes / Example                                                                                            |
@@ -111,6 +117,7 @@ test/
 - `NAME_CONFLICT`: when --duplicates False, target name already exists.
 - Plus possible top-level error logs from batch rename.
 
+---
 
 # 3. How to run scripts using the command line?
 
@@ -206,4 +213,6 @@ python detect_tags.py \
 
 > Replace `detect_tags.py` with your actual script name if different (e.g., `main.py`).
 
-## Please indicate that this material is sourced from the Center for Wheat Genetics and Genomics Center （WGGC）, College of Agriculture, China Agricultural University.
+---
+## Citation Requirements
+Please indicate that this material is sourced from the Center for **Wheat Genetics and Genomics Center (WGGC)**, College of Agriculture, China Agricultural University.
