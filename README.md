@@ -2,15 +2,15 @@
 <p align="center">在田间试验中，样本名称或样本编码通常印在不同颜色的硬质标签上。为了降低人工成本、减少数据采集时间并提升表型数据采集的整体效率，我们基于 AI-OCR 技术做了一套轻量化的自动化流程，用于自动识别标签并批量重命名图片。</p>
 
 <p align="center">
-  <strong>其他语言版本：</strong>
+  <strong>语言：</strong>
   <a href="README.md">中文</a> ·
   <a href="README_EN.md">English</a>
 </p>
 
+<p align="center">
+  <a href="https://github.com/Openmyeyesxz/Image-Renamd_By_AI-OCR_app">GUI APP</a>
+</p>
 ---
-
-## GUI界面程序
-另外，我们提供了[集成AI-OCR和人工核验功能的GUI程序](https://github.com/Openmyeyesxz/Image-Renamd_By_AI-OCR_app)，可以通过AI-OCR进行识别，并且能够实时查看并修改图片文件名。
 
 ## 程序功能详情
 >- 根据图像中的标签上的内容，基于AI-OCR能够循环重命名某个父文件夹下多个子文件夹的图片。
@@ -222,10 +222,14 @@ python detect_tags.py \
 ---
 
 
-# 4. 人工审核照片程序
+# 4. 人工审核照片程序（旧版）
 > 能够实时地预览、修改和保存你的图片，以免AI实现错误的重命名。
 ## 界面视图如下：
 ![image](https://github.com/Openmyeyesxz/Image-Renamd_By_AI-OCR/blob/main/Image/tag_check.png)
+
+
+# 5. GUI界面程序
+另外，我们提供了[集成AI-OCR和人工核验功能的GUI程序](https://github.com/Openmyeyesxz/Image-Renamd_By_AI-OCR_app)，可以通过AI-OCR进行识别，并且能够实时查看并修改图片文件名。
 
 ---
 ## 引用要求
