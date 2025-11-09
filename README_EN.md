@@ -2,9 +2,14 @@
 <p align="center">During field trials, sample names or sample codes are typically displayed on rigid labels of various colours. To reduce labour costs, minimise time expenditure, and enhance operational efficiency during phenotypic data collection, we have developed a streamlined programme based on AI-OCR technology to simplify our workflow.</p>
 
 <p align="center">
-  <strong>Read this in other languages:</strong>
+  <strong>Read this in other languages: </strong>
   <a href="README.md">中文</a> ·
   <a href="README_EN.md">English</a>
+</p>
+
+<p align="center">
+  <strong>New GUI: </strong>
+  <a href="https://github.com/Openmyeyesxz/Image-Renamd_By_AI-OCR_app">Tagtool</a>
 </p>
 
 ---
@@ -220,6 +225,9 @@ python detect_tags.py \
 
 ## Interface view as follows:
 ![image](https://github.com/Openmyeyesxz/Image-Renamd_By_AI-OCR/blob/main/Image/tag_check.png)
+
+# 5. GUI Interface Program
+Additionally, we provide a new [GUI program integrating AI-OCR and manual verification features](https://github.com/Openmyeyesxz/Image-Renamd_By_AI-OCR_app). It enables recognition via AI-OCR and allows real-time viewing and modification of image filenames. Currently, it runs only on Windows.
 
 ---
 
