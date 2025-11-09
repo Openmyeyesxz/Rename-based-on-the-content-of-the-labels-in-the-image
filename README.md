@@ -8,7 +8,7 @@
 </p>
 
 <p align="center">
-  <strong>崭新的GUI</strong>
+  <strong>崭新的GUI：</strong>
   <a href="https://github.com/Openmyeyesxz/Image-Renamd_By_AI-OCR_app">Tagtool</a>
 </p>
 
